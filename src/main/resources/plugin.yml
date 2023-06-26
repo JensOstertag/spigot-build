@@ -1,0 +1,13 @@
+name: Build
+version: '${project.version}'
+main: de.korzhorz.build.Build
+api-version: 1.20
+commands:
+  build:
+    description: Toggle Build Mode
+    usage: /build
+    permission: build.toggle
+  restrictbuild:
+    description: Restrict Build Mode
+    usage: /restrictbuild <true|false>
+    permission: build.restrict
