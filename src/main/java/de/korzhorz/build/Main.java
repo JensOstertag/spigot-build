@@ -6,6 +6,7 @@ import de.korzhorz.build.configs.ConfigFiles;
 import de.korzhorz.build.configs.Messages;
 import de.korzhorz.build.listeners.*;
 import de.korzhorz.build.util.ColorTranslator;
+import de.korzhorz.build.util.GitHubUpdater;
 import de.korzhorz.build.util.InventoryData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -25,7 +26,7 @@ public final class Main extends JavaPlugin {
         
         // Configuration Files
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading Files"));
-        ConfigFiles.loadFiles(this);
+        ConfigFiles.loadFiles();
         ConfigFiles.initFileContents();
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aFiles loaded"));
         
@@ -38,6 +39,13 @@ public final class Main extends JavaPlugin {
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading Events"));
         loadEvents();
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aEvents loaded"));
+        
+        // Update Checker
+        if(GitHubUpdater.updateAvailable()) {
+            this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7]"));
+            this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &9A new Update for this Plugin is available"));
+            this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7]"));
+        }
         
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aPlugin enabled &7- Version: &6v" + this.getDescription().getVersion()));
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aDeveloped by &6KorzHorz"));

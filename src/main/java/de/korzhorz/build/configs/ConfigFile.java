@@ -2,6 +2,7 @@ package de.korzhorz.build.configs;
 
 import de.korzhorz.build.Main;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -22,7 +23,7 @@ public class ConfigFile {
                 e.printStackTrace();
             }
         }
-        this.fileConfiguration = org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(file);
+        this.fileConfiguration = YamlConfiguration.loadConfiguration(file);
     }
     
     public void setDefault(String path, Object value) {
@@ -37,7 +38,6 @@ public class ConfigFile {
     
     public void save() {
         try {
-            System.out.println("Saving file: " + this.file.getName());
             this.fileConfiguration.save(this.file);
         } catch(IOException e) {
             e.printStackTrace();
