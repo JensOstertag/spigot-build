@@ -18,9 +18,11 @@ public class ConfigFiles {
     
     public static void initFileContents() {
         config.setDefault("commands.build.enabled", true);
+
+        config.save();
         
         // Messages
-        messages.setDefault("prefix", "&6&bBuild &8»");
+        messages.setDefault("prefix", "&6&lBuild &8»");
         messages.setDefault("commands.errors.no-player", "&cDu musst ein Spieler sein um diesen Befehl auszuführen.");
         messages.setDefault("commands.errors.no-permission", "&cDu hast keine Rechte um diesen Befehl auszuführen.");
         messages.setDefault("commands.errors.bad-usage", "&cBenutze: &7%usage%");
@@ -31,5 +33,7 @@ public class ConfigFiles {
         
         messages.setDefault("commands.restrict-build.enable", "&7Der &6Build-Command &7wurde &aaktiviert&7.");
         messages.setDefault("commands.restrict-build.disable", "&7Der &6Build-Command &7wurde &cdeaktiviert&7.");
+
+        messages.save();
     }
 }

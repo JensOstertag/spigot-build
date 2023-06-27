@@ -1,6 +1,6 @@
 name: Build
 version: '${project.version}'
-main: de.korzhorz.build.Build
+main: de.korzhorz.build.Main
 api-version: 1.20
 commands:
   build:

@@ -37,6 +37,7 @@ public class ConfigFile {
     
     public void save() {
         try {
+            System.out.println("Saving file: " + this.file.getName());
             this.fileConfiguration.save(this.file);
         } catch(IOException e) {
             e.printStackTrace();

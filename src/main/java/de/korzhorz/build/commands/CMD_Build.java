@@ -28,7 +28,7 @@ public class CMD_Build implements CommandExecutor {
             return false;
         }
         
-        if(args.length != 1) {
+        if(args.length != 0) {
             String message = messages.get("commands.errors.bad-usage");
             message = message.replaceAll("%usage%", cmd.getUsage());
             player.sendMessage(ColorTranslator.translate(messages.get("prefix") + "&r " + message));
