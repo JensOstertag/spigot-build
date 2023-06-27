@@ -26,7 +26,7 @@ public class CMD_RestrictBuild implements CommandExecutor {
         
         Player player = (Player) sender;
         
-        if(!(player.hasPermission("build.toggle"))) {
+        if(!(player.hasPermission("build.restrict"))) {
             player.sendMessage(ColorTranslator.translate(messages.get("prefix") + "&r " + messages.get("commands.errors.no-permission")));
             return false;
         }
