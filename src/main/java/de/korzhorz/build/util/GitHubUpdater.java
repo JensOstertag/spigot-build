@@ -63,7 +63,7 @@ public class GitHubUpdater {
                 JsonArray jsonArray = new Gson().fromJson(json, JsonArray.class);
 
                 if(jsonArray.size() == 0) {
-                    JavaPlugin.getPlugin(Main.class).getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&9GitHub&7] &cUpdate Checker unavailable"));
+                    JavaPlugin.getPlugin(Main.class).getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&9GitHub&7] &cGitHub update checker unavailable"));
                     latestVersion = ConfigFiles.updater.getString("latest");
                     return;
                 }
@@ -74,11 +74,11 @@ public class GitHubUpdater {
                 ConfigFiles.updater.set("last-checked", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
                 ConfigFiles.updater.save();
             } catch(FileNotFoundException e) {
-                JavaPlugin.getPlugin(Main.class).getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&9GitHub&7] &cUpdate Checker unavailable"));
+                JavaPlugin.getPlugin(Main.class).getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&9GitHub&7] &cGitHub update checker unavailable"));
                 latestVersion = ConfigFiles.updater.getString("latest");
             }
         } catch(IOException e) {
-            JavaPlugin.getPlugin(Main.class).getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&9GitHub&7] &cUpdate Checker unavailable"));
+            JavaPlugin.getPlugin(Main.class).getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&9GitHub&7] &cGitHub update checker unavailable"));
             latestVersion = ConfigFiles.updater.getString("latest");
         }
     }
