@@ -13,7 +13,7 @@ public class EVT_PlayerQuitEvent implements Listener {
     Messages messages = new Messages();
 
     @EventHandler
-    public void onPlayerJoin(PlayerQuitEvent event) {
+    public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         
         if(!(Data.inventories.containsKey(player.getUniqueId()))) {

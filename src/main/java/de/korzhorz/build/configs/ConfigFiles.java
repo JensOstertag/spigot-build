@@ -4,6 +4,7 @@ import de.korzhorz.build.Main;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ConfigFiles {
@@ -20,6 +21,8 @@ public class ConfigFiles {
     public static void initFileContents() {
         // Config
         config.setDefault("commands.build.enabled", true);
+        config.setDefault("overrides.protected", new ArrayList<>());
+        config.setDefault("overrides.unprotected", new ArrayList<>());
 
         config.save();
 
