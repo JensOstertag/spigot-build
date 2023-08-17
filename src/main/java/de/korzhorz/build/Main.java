@@ -25,25 +25,25 @@ public final class Main extends JavaPlugin {
         this.getDataFolder().mkdir();
         
         // Configuration Files
-        this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading Files"));
+        this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading files"));
         ConfigFiles.loadFiles();
         ConfigFiles.initFileContents();
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aFiles loaded"));
         
         // Commands
-        this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading Commands"));
+        this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading commands"));
         loadCommands();
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aCommands loaded"));
         
         // Events
-        this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading Events"));
+        this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading events"));
         loadEvents();
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aEvents loaded"));
         
         // Update Checker
         if(GitHubUpdater.updateAvailable()) {
             this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7]"));
-            this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &9A new Update for this Plugin is available"));
+            this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &9A new update for this plugin is available"));
             this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7]"));
         }
         

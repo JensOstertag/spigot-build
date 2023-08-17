@@ -23,8 +23,18 @@ public class GitHubUpdater {
         if(latestVersion == null) {
             return false;
         }
-        
-        return !(currentVersion.equals(latestVersion));
+
+        // Check if current version is more recent than latest version
+        String[] currentVersionSplit = currentVersion.split("\\.");
+        String[] latestVersionSplit = latestVersion.split("\\.");
+
+        for(int i = 0; i < currentVersionSplit.length; i++) {
+            if(Integer.parseInt(currentVersionSplit[i]) < Integer.parseInt(latestVersionSplit[i])) {
+                return true;
+            }
+        }
+
+        return false;
     }
     
     public static void checkUpdates() {
@@ -50,8 +60,15 @@ public class GitHubUpdater {
                     stringBuilder.append((char) cp);
                 }
                 String json = stringBuilder.toString();
-                JsonArray jsonObject = new Gson().fromJson(json, JsonArray.class);
-                latestVersion = jsonObject.get(0).getAsJsonObject().get("tag_name").getAsString();
+                JsonArray jsonArray = new Gson().fromJson(json, JsonArray.class);
+
+                if(jsonArray.size() == 0) {
+                    JavaPlugin.getPlugin(Main.class).getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&9GitHub&7] &cUpdate Checker unavailable"));
+                    latestVersion = ConfigFiles.updater.getString("latest");
+                    return;
+                }
+
+                latestVersion = jsonArray.get(0).getAsJsonObject().get("tag_name").getAsString();
                 
                 ConfigFiles.updater.set("latest", latestVersion);
                 ConfigFiles.updater.set("last-checked", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
