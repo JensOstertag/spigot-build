@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GitHubUpdater {
-    private static final String user = "JensOstertag";
+    private static final String user = "Spigot-Plugin-Ecosystem";
     private static final String repository = "spigot-build";
     private static String latestVersion = null;
     private static final String currentVersion = JavaPlugin.getPlugin(Main.class).getDescription().getVersion();
