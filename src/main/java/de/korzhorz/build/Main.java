@@ -26,7 +26,6 @@ public final class Main extends JavaPlugin {
         
         // Configuration Files
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &7Loading files"));
-        ConfigFiles.loadFiles();
         ConfigFiles.initFileContents();
         this.getServer().getConsoleSender().sendMessage(ColorTranslator.translate("&7[&6Build&7] &aFiles loaded"));
         
@@ -75,6 +74,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EVT_HangingPlaceEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_SignChangeEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_PlayerInteractEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new EVT_InteractEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_BlockBurnEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_BlockExplodeEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_BlockGrowEvent(), this);

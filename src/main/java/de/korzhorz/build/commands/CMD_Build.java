@@ -1,9 +1,11 @@
 package de.korzhorz.build.commands;
 
-import de.korzhorz.build.BuildAPI;
 import de.korzhorz.build.Data;
 import de.korzhorz.build.configs.Messages;
+import de.korzhorz.build.handlers.InventoryHandler;
 import de.korzhorz.build.util.ColorTranslator;
+import de.korzhorz.build.util.InventoryData;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,7 +40,21 @@ public class CMD_Build implements CommandExecutor {
             return false;
         }
 
-        BuildAPI.setBuildMode(player, !Data.inventories.containsKey(player.getUniqueId()));
+        if(Data.inventories.containsKey(player.getUniqueId())) {
+            InventoryData inventoryData = Data.inventories.get(player.getUniqueId());
+            Data.inventories.remove(player.getUniqueId());
+            inventoryData.restore();
+
+            player.sendMessage(ColorTranslator.translate(messages.get("prefix") + "&r " + messages.get("commands.build.disable")));
+        } else {
+            InventoryData inventoryData = new InventoryData(player);
+            Data.inventories.put(player.getUniqueId(), inventoryData);
+
+            new InventoryHandler().clearInventory(player);
+            player.setGameMode(GameMode.CREATIVE);
+
+            player.sendMessage(ColorTranslator.translate(messages.get("prefix") + "&r " + messages.get("commands.build.enable")));
+        }
         
         return true;
     }

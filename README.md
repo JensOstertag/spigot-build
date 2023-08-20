@@ -15,13 +15,8 @@ Schränkt den Zugriff auf den Build-Modus ein. Wenn als Wert `false` angegeben w
 
 ## Event-Handling
 Die meisten Event-Listener dieses Plugins sind mit der Priorität `LOWEST` versehen, das bedeutet, dass wichtigere Events zuerst abgefangen werden. Dadurch sollten Kollisionen mit anderen Plugins vermieden werden, die ebenfalls mit dem jeweiligen Event arbeiten und dieses eventuell verändern.
+Dahingegen sind die Listener für das `PlayerInteractEvent` und das `InventoryClickEvent` mit der Priorität `HIGHEST` versehen, da diese Events für Spieler, die sich im Build-Modus befinden, nicht verändert werden dürfen (ansonsten wäre es im Zusammenspiel mit anderen Plugins möglich, dass sie z.B. keine Items im Inventar platzieren können).
 
 ## Technische Details
 #### Unterstützte Minecraft-Versionen
 1.20 - 1.20.1
-
-## BuildAPI
-Dieses Plugin bietet eine API an, die es anderen Plugins ermöglicht, den Build-Modus für bestimmte Spieler abzufragen und zu setzen.
-Die Klasse `de.korzhorz.build.BuildAPI` bietet dafür die folgenden Methoden an:
-- `boolean isInBuildMode(Player player)`
-- `void setBuildMode(Player player, boolean enable)`
