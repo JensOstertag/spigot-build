@@ -1,5 +1,6 @@
 package de.korzhorz.build.commands;
 
+import de.korzhorz.build.BuildAPI;
 import de.korzhorz.build.Data;
 import de.korzhorz.build.configs.Messages;
 import de.korzhorz.build.handlers.InventoryHandler;
@@ -39,22 +40,8 @@ public class CMD_Build implements CommandExecutor {
             player.sendMessage(ColorTranslator.translate(messages.get("prefix") + "&r " + messages.get("commands.build.restricted")));
             return false;
         }
-        
-        if(Data.inventories.containsKey(player.getUniqueId())) {
-            InventoryData inventoryData = Data.inventories.get(player.getUniqueId());
-            Data.inventories.remove(player.getUniqueId());
-            inventoryData.restore();
-            
-            player.sendMessage(ColorTranslator.translate(messages.get("prefix") + "&r " + messages.get("commands.build.disable")));
-        } else {
-            InventoryData inventoryData = new InventoryData(player);
-            Data.inventories.put(player.getUniqueId(), inventoryData);
-            
-            new InventoryHandler().clearInventory(player);
-            player.setGameMode(GameMode.CREATIVE);
-            
-            player.sendMessage(ColorTranslator.translate(messages.get("prefix") + "&r " + messages.get("commands.build.enable")));
-        }
+
+        BuildAPI.setBuildMode(player, !Data.inventories.containsKey(player.getUniqueId()));
         
         return true;
     }

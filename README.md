@@ -19,3 +19,9 @@ Die meisten Event-Listener dieses Plugins sind mit der Priorität `LOWEST` verse
 ## Technische Details
 #### Unterstützte Minecraft-Versionen
 1.20 - 1.20.1
+
+## BuildAPI
+Dieses Plugin bietet eine API an, die es anderen Plugins ermöglicht, den Build-Modus für bestimmte Spieler abzufragen und zu setzen.
+Die Klasse `de.korzhorz.build.BuildAPI` bietet dafür die folgenden Methoden an:
+- `boolean isInBuildMode(Player player)`
+- `void setBuildMode(Player player, boolean enable)`
