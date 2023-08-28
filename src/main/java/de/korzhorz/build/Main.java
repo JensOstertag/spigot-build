@@ -78,6 +78,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EVT_BlockBurnEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_BlockExplodeEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_BlockGrowEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new EVT_CropFertilizeEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_BlockSpreadEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_LeavesDecayEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EVT_EntityExplodeEvent(), this);

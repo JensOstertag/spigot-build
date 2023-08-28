@@ -1,5 +1,6 @@
 package de.korzhorz.build.listeners;
 
+import de.korzhorz.build.Data;
 import de.korzhorz.build.handlers.ProtectionHandler;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -14,6 +15,11 @@ public class EVT_BlockGrowEvent implements Listener {
         Block block = event.getBlock();
 
         if(!(ProtectionHandler.isProtected(block.getWorld().getName()))) {
+            return;
+        }
+
+        if(Data.fertilizedBlocks.contains(block)) {
+            Data.fertilizedBlocks.remove(block);
             return;
         }
 
